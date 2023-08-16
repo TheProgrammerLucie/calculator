@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CALCULATOR</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="icon.png" type="image/x-icon">
+</head> 
+<body>
+    <div id="container">
+        <div id="txtbx">
+            <textarea rows="3" name="equation" id="equ"></textarea>
+        </div>
+        
+        <div id="buttons">
+            <button  class="greed1"  onclick="append('7')">7</button>  
+            <button  class="greed1"  onclick="append('8')">8</button>        
+            <button  class="greed1"  onclick="append('9')">9</button>        
+            <button  class="greed1"  onclick="append('/')">&#247;</button>        
+            <button  class="greed1"  onclick="append('4')">4</button>        
+            <button  class="greed1"  onclick="append('5')">5</button>        
+            <button  class="greed1"  onclick="append('6')">6</button>        
+            <button  class="greed1"  onclick="append('*')">x</button>
+            <button  class="greed1"  onclick="append('1')">1</button>       
+            <button  class="greed1"  onclick="append('2')">2</button>       
+            <button  class="greed1"  onclick="append('3')">3</button>
+            <button  class="greed1"  onclick="append('-')">-</button>
+            <button  class="greed1" value="&#8592;" onclick="bksp()">&#8592;</button> 
+            <button  class="greed1"  onclick="append('0')">0</button>
+            <button  class="greed1"  onclick="append('.')">.</button>
+            <button  class="greed1"  onclick="append('+')">+</button>
+        </div>
+        <div id="buttons2">
+            <button  class="greed2"  onclick="clear1()">C</button> 
+                <button  class="greed2" value="=" onclick="solve()">=</button>
+            </div>
+                <div id="resdiv">
+
+            <input type="text" name="result" id="result"  readonly>
+        </div>
+        <div id="note"><h5>NOTE: USE KEYBORD IF YOUR CALCULATION IS TOO LONG.</h3></div>   
+    </div>
+    <div id="credits">
+        <h5>CREATED BY <span id="god">Lucie</span></h5>
+    </div>
+</body>
+<script>
+    function append(value) {
+        document.getElementById('equ').value += value;
+    }
+    function clear1() {
+        document.getElementById('equ').value ='';
+        document.getElementById('result').value ='';
+    }
+    function bksp() {
+        let equation = document.getElementById('equ').value;
+        document.getElementById('equ').value = equation.slice(0, -1);
+    }
+    function updateResult(result) {
+        document.getElementById('result').value = result;
+    }
+    function solve() {
+        let equation = document.getElementById('equ').value;
+        try {
+            let result = eval(equation);
+            updateResult(result);
+        } catch (error) {
+            updateResult('Error');
+        }
+    }
+
+
+</script>
+</html>
